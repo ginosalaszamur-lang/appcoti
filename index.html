@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Cotizaciones | GSOL Chile</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="panel form-panel">
+        <h1>Sistema de Cotizaciones GSOL Chile</h1>
+
+        <form id="quoteForm">
+          <fieldset>
+            <legend>Datos generales</legend>
+            <div class="grid-2">
+              <label>N° cotización
+                <input type="number" id="quoteNumber" value="1828" required />
+              </label>
+              <label>Fecha
+                <input type="date" id="quoteDate" required />
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Cliente</legend>
+            <label>Nombre
+              <input type="text" id="clientName" value="Jose" required />
+            </label>
+            <label>Teléfono
+              <input type="text" id="clientPhone" value="+56 9 3509 7010" required />
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Detalle del sistema (una línea por ítem)</legend>
+            <textarea id="systemDetails" rows="8">8 paneles solares de 620W
+Inversor híbrido 5 kW Voltronic
+1 batería de litio Nimac 48V 100Ah (4.8 kWh)
+Canalización eléctrica completa
+Protecciones eléctricas
+Estructura de montaje
+Instalación completa y puesta en marcha
+Garantía full de 3 años</textarea>
+          </fieldset>
+
+          <fieldset>
+            <legend>Precio</legend>
+            <label>Total (CLP)
+              <input type="number" id="totalPrice" value="2940000" required />
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Condiciones (una línea por ítem)</legend>
+            <textarea id="conditions" rows="6">Plazo de instalación: 1 a 3 días hábiles
+Forma de pago: 50% anticipo / 50% contra entrega
+Validez de la cotización: 7 días
+Instalación incluida en RM, Valparaíso y O'Higgins
+Fuera de estas regiones: $1.050 por km (solo ida desde Santiago)</textarea>
+          </fieldset>
+
+          <fieldset>
+            <legend>Datos bancarios (una línea por ítem)</legend>
+            <textarea id="bankData" rows="5">Titular: Gsol Chile
+RUT: 77.609.175-8
+Banco: Santander Chile
+Cuenta Corriente: 8878 2917
+Email: comprobantes@gsol.cl</textarea>
+          </fieldset>
+
+          <div class="actions">
+            <button type="submit">Actualizar vista previa</button>
+            <button type="button" id="printBtn">Imprimir / Guardar PDF</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel preview-panel">
+        <article class="quote" id="quotePreview">
+          <header class="quote-header">
+            <div class="logo-box">GSOL <span>CHILE</span><small>SOLAR PANEL INSTALLATION</small></div>
+            <div class="quote-meta">
+              <h2>COTIZACIÓN</h2>
+              <p>N° <span data-field="quoteNumber"></span></p>
+              <p>Fecha: <span data-field="quoteDate"></span></p>
+            </div>
+          </header>
+
+          <section class="table two-col">
+            <div>
+              <h3>DATOS DEL CLIENTE</h3>
+              <p><span data-field="clientName"></span><br /><span data-field="clientPhone"></span></p>
+            </div>
+            <div>
+              <h3>DATOS DE LA EMPRESA</h3>
+              <p>GSOL Chile<br />contacto@gsol.cl<br />+56 9 2167 5884<br />www.gsol.cl<br />Santiago, Chile</p>
+            </div>
+          </section>
+
+          <section class="table">
+            <h3>DETALLE DEL SISTEMA</h3>
+            <ul data-list="systemDetails"></ul>
+          </section>
+
+          <section class="table total-row">
+            <strong>Precio total (IVA incluido)</strong>
+            <strong data-field="totalPrice"></strong>
+          </section>
+
+          <section class="table">
+            <h3>CONDICIONES</h3>
+            <ul data-list="conditions"></ul>
+          </section>
+
+          <section class="table">
+            <h3>DATOS BANCARIOS</h3>
+            <ul data-list="bankData"></ul>
+          </section>
+        </article>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
